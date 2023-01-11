@@ -6,24 +6,24 @@ let cadastros = []
 formularioCriarConta.addEventListener('submit', (ev) => {
     ev.preventDefault()
 
-    
-
     const inputEmail = document.getElementById('email')
+    let inputPassword = 
+
+
     inputEmail.addEventListener('focus', () => {
         feedbackHTML.innerHTML = ''
-        formularioCriarConta.reset()
     })
     console.log(inputEmail.value)
+
     const senha1 = document.getElementById('password-1')
     senha1.addEventListener('focus', () => {
         feedbackHTML.innerHTML = ''
-        formularioCriarConta.reset()
     })
     console.log(senha1.value)
+
     const senha2 = document.getElementById('password-2')
     senha2.addEventListener('focus', () => {
         feedbackHTML.innerHTML = ''
-        formularioCriarConta.reset()
     })
     console.log(senha2.value)
 
@@ -33,8 +33,12 @@ formularioCriarConta.addEventListener('submit', (ev) => {
         feedbackHTML.innerHTML = 'E-mail já cadastrado!'
     }
 
-    if(senha1 !== senha2){
+    if(senha1.value !== senha2.value){
         feedbackHTML.innerHTML = 'As senhas não conferem!'
+    } else {
+        inputPassword = senha1.value
     }
+
+    console.log(inputPassword);
 })
 
