@@ -23,7 +23,7 @@ formularioCriarConta.addEventListener('submit', (ev) => {
     senha2.addEventListener('focus', () => {
         feedbackHTML.innerHTML = ''
     })
-    
+
     const feedbackHTML = document.getElementById('feedback')  
 
     const existe = listaCadastros.some((valor) => valor.email === inputEmail.value)
@@ -43,6 +43,8 @@ formularioCriarConta.addEventListener('submit', (ev) => {
 
     listaCadastros.push(novoCadastro)
     guardarLocalStorage('cadastros', listaCadastros)
+
+    formularioCriarConta.reset()
 })
 
 function guardarLocalStorage(chave, valor){
