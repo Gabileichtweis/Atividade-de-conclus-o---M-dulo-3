@@ -1,44 +1,64 @@
 const formularioCriarConta = document.getElementById('form')
-console.log(formularioCriarConta)
-
-let cadastros = []
+const listaCadastros = buscarLocalStorage('cadastros')
 
 formularioCriarConta.addEventListener('submit', (ev) => {
     ev.preventDefault()
 
+    const novoCadastro = {
+        email: '',
+        password: '',
+    }
+
     const inputEmail = document.getElementById('email')
-    let inputPassword = 
-
-
     inputEmail.addEventListener('focus', () => {
         feedbackHTML.innerHTML = ''
     })
-    console.log(inputEmail.value)
 
     const senha1 = document.getElementById('password-1')
     senha1.addEventListener('focus', () => {
         feedbackHTML.innerHTML = ''
     })
-    console.log(senha1.value)
 
     const senha2 = document.getElementById('password-2')
     senha2.addEventListener('focus', () => {
         feedbackHTML.innerHTML = ''
     })
-    console.log(senha2.value)
+    
+    const feedbackHTML = document.getElementById('feedback')  
 
-    const feedbackHTML = document.getElementById('feedback')
-
-    if(inputEmail === localStorage){
+    const existe = listaCadastros.some((valor) => valor.email === inputEmail.value)
+    if(existe){
         feedbackHTML.innerHTML = 'E-mail já cadastrado!'
+        return
+    } else {
+        novoCadastro.email = inputEmail.value
     }
 
     if(senha1.value !== senha2.value){
         feedbackHTML.innerHTML = 'As senhas não conferem!'
+        return
     } else {
-        inputPassword = senha1.value
+        novoCadastro.password = senha1.value
     }
 
-    console.log(inputPassword);
+    listaCadastros.push(novoCadastro)
+    guardarLocalStorage('cadastros', listaCadastros)
 })
+
+function guardarLocalStorage(chave, valor){
+    const valorJSON = JSON.stringify(valor)
+
+    localStorage.setItem(chave, valorJSON)
+}
+
+function buscarLocalStorage(chave){
+    const dadosJSON = localStorage.getItem(chave)
+
+    if(dadosJSON){
+        const dadosConvertidos = JSON.parse(dadosJSON)
+        return dadosConvertidos
+    } else {
+        return []
+    }
+}
 
