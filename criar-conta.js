@@ -45,6 +45,7 @@ formularioCriarConta.addEventListener('submit', (ev) => {
     guardarLocalStorage('cadastros', listaCadastros)
 
     formularioCriarConta.reset()
+    window.location.href = './entrar-sistema.html' 
 })
 
 function guardarLocalStorage(chave, valor){
