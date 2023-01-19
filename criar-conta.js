@@ -7,6 +7,7 @@ formularioCriarConta.addEventListener('submit', (ev) => {
     const novoCadastro = {
         email: '',
         password: '',
+        recados: [],
     }
 
     const inputEmail = document.getElementById('email')

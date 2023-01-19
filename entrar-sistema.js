@@ -16,15 +16,22 @@ formularioEntrar.addEventListener('submit', (ev) => {
 
     const feedbackHTML = window.document.getElementById('feedback')
 
-    const existe = listaCadastros.find((valor) => valor.email === inputEmail.value && valor.password === inputPassword.value)
+    const usuarioEncontrado = listaCadastros.find((valor) => valor.email === inputEmail.value && valor.password === inputPassword.value)
 
-    if(existe){
+    if(usuarioEncontrado){
+        guardarLocalStorage('usuarioLogado', usuarioEncontrado)
         window.location.href = './recados.html'
     } else {
         feedbackHTML.innerHTML = 'Opss! E-mail ou senha incorretos'
         return
     }
 })
+
+function guardarLocalStorage(chave, valor){
+    const valorJSON = JSON.stringify(valor)
+
+    localStorage.setItem(chave, valorJSON)
+}
 
 
 function buscarLocalStorage(chave){
