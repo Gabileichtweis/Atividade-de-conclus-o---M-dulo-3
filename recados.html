@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 
     <title>Recados</title>
@@ -36,9 +37,29 @@
         </table>
 
         <button onclick="sair()" type="submit" id="button-sair">SAIR</button>
-    </div> 
+    </div>
+    
+    <div class="modal fade" id="modal-editar" tabindex="-1" aria-labelledby="modalEditarRecado" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title fs-5" id="modalEditarRecado">EDITAR RECADO</h2>
+            </div>
+            <form id="form-recados-editar">
+                <div class="modal-body">            
+                    <input type="text" id="retangulo-editar-titulo" placeholder="  Título" required> <br>
+                    <input type="text" id="retangulo-editar-descricao" placeholder="  Descrição" required>   
+                </div>
+                <div class="modal-footer">
+                    <button id="button-apagar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="button-editar" type="submit" class="btn btn-primary">Salvar alterações</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="./recados.js"></script>
 </body>
 </html>

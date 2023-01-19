@@ -1,3 +1,5 @@
+const modal = new bootstrap.Modal('#modal-editar')
+
 const usuarioLogado = buscarLocalStorage('usuarioLogado')
 
 if(!usuarioLogado.email) {
@@ -23,7 +25,8 @@ formularioRecados.addEventListener('submit', (ev) => {
 
     usuarioLogado.recados.push(recadosUsuario)
     guardarLocalStorage('usuarioLogado', usuarioLogado)
-    salvarRecados()
+
+    formularioRecados.reset()
 
     preencherTabela()
 })
@@ -40,7 +43,7 @@ function preencherTabela(){
                 <td>${valor.titulo}</td>
                 <td>${valor.descricao}</td>
                 <td>
-                    <button id='button-editar'>Editar</button>
+                    <button id="button-editar" type="button" onclick="prepararEdicao(${index})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-editar">Editar</button>
                     <button onclick="apagar(${index})" id='button-apagar'>Apagar</button>
                 </td>
         </tr>
@@ -69,11 +72,32 @@ function buscarLocalStorage(chave){
 function salvarRecados(){
     const listaUsuario = buscarLocalStorage('cadastros')
 
-    const acharUsuario = listaUsuario.findIndex((valor) => valor.email === usuarioLogado.email)
+    const indiceUsuario = listaUsuario.findIndex((valor) => valor.email === usuarioLogado.email)
  
-    listaUsuario[acharUsuario].recados = usuarioLogado.recados
+    listaUsuario[indiceUsuario].recados = usuarioLogado.recados
  
     guardarLocalStorage('cadastros', listaUsuario)
+}
+
+function prepararEdicao(index){
+    const inputEditarTitulo = document.getElementById('retangulo-editar-titulo')
+    const inputEditarDescricao = document.getElementById('retangulo-editar-descricao')
+
+    inputEditarTitulo.value = usuarioLogado.recados[index].titulo
+    inputEditarDescricao.value = usuarioLogado.recados[index].descricao
+
+    const formularioEditar = document.getElementById('form-recados-editar')
+    formularioEditar.addEventListener('submit', (ev) =>{
+        ev.preventDefault()
+
+        usuarioLogado.recados[index].titulo = inputEditarTitulo.value
+        usuarioLogado.recados[index].descricao = inputEditarDescricao.value
+        
+        guardarLocalStorage('usuarioLogado', usuarioLogado)
+        preencherTabela()
+        
+        modal.hide()
+    })
 }
 
 function apagar(index){
@@ -84,10 +108,11 @@ function apagar(index){
     usuarioLogado.recados = novosRecados
 
     guardarLocalStorage('usuarioLogado', usuarioLogado)
-    salvarRecados()
-    preencherTabela()    
+    preencherTabela() 
 }
 
 function sair(){
+    salvarRecados()
+    localStorage.removeItem('usuarioLogado')
     window.location.href = './entrar-sistema.html'
 }

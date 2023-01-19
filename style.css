@@ -68,6 +68,10 @@ p{
   color: #015871;
 }
 
+a{
+  text-decoration: none;
+}
+
 table{
   border: 2px solid white;
   border-collapse: collapse;
@@ -106,6 +110,10 @@ td{
   border-radius: 30px;
 }
 
+#modal-editar{
+  background-color: #b7e9eb76;
+}
+
 #div-recados{
   width: 90vw;
   height: 90vh;
@@ -125,7 +133,6 @@ td{
   padding-top: 2vh;
   padding-bottom:  2vh;
   outline-color: #015871;
-
 }
 
 #retangulo-form-titulo{
@@ -150,6 +157,28 @@ td{
   outline-color: #015871;
 }
 
+#retangulo-editar-titulo{
+  background-color: #fffeea;
+  border: none;
+  border-radius: 30px;
+  width: 93.5%;
+  padding-top: 2vh;
+  padding-bottom:  2vh;
+  margin: 2vw;
+  outline-color: #015871;
+}
+
+#retangulo-editar-descricao{
+  background-color: #fffeea;
+  border: none;
+  border-radius: 30px;
+  width: 93.5%;
+  padding-top: 2vh;
+  padding-bottom:  2vh;
+  margin: 2vw;
+  outline-color: #015871;
+}
+
 #button-padrao{
   background-color: #fffeea;
   color: #015871;
@@ -171,6 +200,32 @@ td{
   font-family: serif;
   font-weight: bold;
 }
+
+#button-sair{
+  background-color: #fffeea;
+  color: #015871;
+  border: none;
+  border-radius: 30px;
+  padding: 1vw 2vh;
+  font-size: 16px;
+  font-family: serif;
+  font-weight: bold;
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+}
+
+#button-sair:hover{
+  background-color: #015871;
+  color: #fffeea;
+  border: none;
+  border-radius: 30px;
+  padding: 1vw 2vh;
+  font-size: 16px;
+  font-family: serif;
+  font-weight: bold;
+}
+
 
 #button-criar-conta{
   color: #015871;
