@@ -1,5 +1,4 @@
 const usuarioLogado = buscarLocalStorage('usuarioLogado')
-console.log(usuarioLogado)
 
 if(!usuarioLogado.email) {
     window.location.href = './entrar-sistema.html'
@@ -7,6 +6,8 @@ if(!usuarioLogado.email) {
 
 const formularioRecados = document.getElementById('form-recados')
 const tbody = document.getElementById('tbody')
+
+document.addEventListener('DOMContentLoaded', preencherTabela())
 
 formularioRecados.addEventListener('submit', (ev) => {
     ev.preventDefault()
@@ -19,13 +20,15 @@ formularioRecados.addEventListener('submit', (ev) => {
         descricao: inputDescricao.value
 
     }
-    console.log(recadosUsuario);
 
     usuarioLogado.recados.push(recadosUsuario)
-    console.log(usuarioLogado);
+    guardarLocalStorage('usuarioLogado', usuarioLogado)
+    salvarRecados()
 
     preencherTabela()
 })
+
+
 
 function preencherTabela(){
     tbody.innerHTML = ''
@@ -37,8 +40,8 @@ function preencherTabela(){
                 <td>${valor.titulo}</td>
                 <td>${valor.descricao}</td>
                 <td>
-                    <button id='button-apagar'>Apagar</button>
                     <button id='button-editar'>Editar</button>
+                    <button onclick="apagar(${index})" id='button-apagar'>Apagar</button>
                 </td>
         </tr>
       `
@@ -63,6 +66,28 @@ function buscarLocalStorage(chave){
     }
 }
 
-/* function apagar{
-    filter
-} */
+function salvarRecados(){
+    const listaUsuario = buscarLocalStorage('cadastros')
+
+    const acharUsuario = listaUsuario.findIndex((valor) => valor.email === usuarioLogado.email)
+ 
+    listaUsuario[acharUsuario].recados = usuarioLogado.recados
+ 
+    guardarLocalStorage('cadastros', listaUsuario)
+}
+
+function apagar(index){
+    const novosRecados = usuarioLogado.recados.filter((valor, indice) => {
+        return indice !== index
+    })
+
+    usuarioLogado.recados = novosRecados
+
+    guardarLocalStorage('usuarioLogado', usuarioLogado)
+    salvarRecados()
+    preencherTabela()    
+}
+
+function sair(){
+    window.location.href = './entrar-sistema.html'
+}
