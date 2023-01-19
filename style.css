@@ -68,6 +68,29 @@ p{
   color: #015871;
 }
 
+table{
+  border: 2px solid white;
+  border-collapse: collapse;
+  margin: 5vh 3vw 3vh 3vw;
+  text-align: justify;
+}
+
+tr{
+  border: solid white 2px;
+  border-collapse: collapse;
+}
+
+th{
+  font-family: serif;
+  color: #015871;
+  font-size: 24px;
+  padding: 10px;
+}
+
+td{
+  padding: 10px;
+}
+
 #div-form{
   width: 50%;
   height: 50%;
@@ -83,6 +106,17 @@ p{
   border-radius: 30px;
 }
 
+#div-recados{
+  width: 90vw;
+  height: 90vh;
+  position: absolute;
+  left: calc(50vw - 45vw);
+  top: calc(50vh - 45vh);
+  text-align: center;
+  background-color: #b7e9eb76;
+  border-radius: 30px;
+}
+
 .retangulo-form{
   background-color: #fffeea;
   border: none;
@@ -92,6 +126,28 @@ p{
   padding-bottom:  2vh;
   outline-color: #015871;
 
+}
+
+#retangulo-form-titulo{
+  background-color: #fffeea;
+  border: none;
+  border-radius: 30px;
+  width: 25%;
+  padding-top: 2vh;
+  padding-bottom:  2vh;
+  margin-right: 2vw;
+  outline-color: #015871;
+}
+
+#retangulo-form-descricao{
+  background-color: #fffeea;
+  border: none;
+  border-radius: 30px;
+  width: 60%;
+  padding-top: 2vh;
+  padding-bottom:  2vh;
+  margin-right: 2vw;
+  outline-color: #015871;
 }
 
 #button-padrao{
@@ -110,7 +166,7 @@ p{
   color: #fffeea;
   border: none;
   border-radius: 30px;
-  padding: 1vw 2vw;
+  padding: 1vw 2vh;
   font-size: 16px;
   font-family: serif;
   font-weight: bold;
@@ -123,4 +179,36 @@ p{
   font-size: 17px;
   font-family: serif;
   font-weight: bold;
+}
+
+#button-apagar{
+  background-color: red;
+  color: #fffeea;
+  border: none;
+  border-radius: 30px;
+  padding: 8px;
+}
+
+#button-editar{
+  background-color: green;
+  color: #fffeea;
+  border: none;
+  border-radius: 30px;
+  padding: 8px;
+}
+
+#coluna-indice{
+  width: 10vw;
+}
+
+#coluna-titulo{
+  width: 25vw;
+}
+
+#coluna-descricao{
+  width: 35vw;
+}
+
+#coluna-acao{
+  width: 10vw;
 }
