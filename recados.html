@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
     <title>Recados</title>
 </head>
 <body>
+    <div id="div-recados">
+        <form id="form-recados">
+            <h2>RECADOS</h2>
     
+            <input type="text" id="retangulo-form-titulo" placeholder="  Título">
+            <input type="text" id="retangulo-form-descricao" placeholder="  Descrição">
+            <button type="submit" id="button-padrao">SALVAR</button>
+    
+        </form>
+    
+        <table>
+            <thead>
+                <tr>
+                    <th id="coluna-indice">#</th>
+                    <th id="coluna-titulo">TÍTULO</th>
+                    <th id="coluna-descricao">DESCRIÇÃO</th>
+                    <th id="coluna-acao">AÇÃO</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+    </div> 
+
+
+    <script src="./recados.js"></script>
 </body>
 </html>
