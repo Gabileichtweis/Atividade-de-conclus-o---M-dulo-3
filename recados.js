@@ -31,8 +31,6 @@ formularioRecados.addEventListener('submit', (ev) => {
     preencherTabela()
 })
 
-
-
 function preencherTabela(){
     tbody.innerHTML = ''
 
@@ -43,7 +41,7 @@ function preencherTabela(){
                 <td>${valor.titulo}</td>
                 <td>${valor.descricao}</td>
                 <td>
-                    <button id="button-editar" type="button" onclick="prepararEdicao(${index})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-editar">Editar</button>
+                    <button id="button-editar" type="button" onclick="prepararEdicao(${index})" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-editar">  Editar  </button>
                     <button onclick="apagar(${index})" id='button-apagar'>Apagar</button>
                 </td>
         </tr>
